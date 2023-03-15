@@ -13,7 +13,7 @@ import UIKit
     @Published var image: UIImage? = nil
     @Published var isWorking: Bool = false
     @Published var showAlert: Bool = false
-    @Published var errorMessage: String = ""
+    @Published var alertMessage: String = ""
     
     func sendRequest(prompText: String) {
         Task {
@@ -25,12 +25,41 @@ import UIKit
                 image = UIImage(data: data)
                 isWorking = false
             }
-            catch {
-                isWorking = false
-                showAlert = true
-                errorMessage = error.localizedDescription
-                
+            catch ImageGenerationError.apiCallFail(let msg){
+                setFlags(msg)
             }
+            catch ImageGenerationError.errorParsingAPIKey(let msg){
+                setFlags(msg)
+            }
+            catch ImageGenerationError.errorReadingAPIKeyFile(let msg){
+                setFlags(msg)
+            }
+            catch ImageGenerationError.fileNotFound(let msg){
+                setFlags(msg)
+            }
+            catch SaveImageError.saveError(let msg){
+                setFlags(msg)
+            }
+        }
+    }
+    
+    fileprivate func setFlags(_ msg: String) {
+        isWorking = false
+        showAlert = true
+        alertMessage = msg
+    }
+    
+    func saveImage(image: UIImage) {
+        do {
+            let isImageSaved = try SaveImageService().saveImage(image: image);
+            if(isImageSaved) {
+                showAlert = true
+                alertMessage = "Saved successfully"
+            }
+        }
+        catch {
+            showAlert = true
+            alertMessage = error.localizedDescription;
         }
     }
 }

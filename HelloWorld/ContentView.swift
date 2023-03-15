@@ -18,7 +18,7 @@ struct ContentView: View {
             generateImageButtonView
             imageView
             progressDisplayView
-        }.alert(imageGenerationViewModel.errorMessage, isPresented: $imageGenerationViewModel.showAlert ) {
+        }.alert(imageGenerationViewModel.alertMessage, isPresented: $imageGenerationViewModel.showAlert ) {
             cancelButtonView
         }.background(
             Image("Background")
@@ -61,6 +61,8 @@ private extension ContentView {
                 .foregroundColor(Color.black)
         }).padding().disabled(description.isEmpty)
     }
+    
+    
     var imageView: some View {
         VStack {
             if let imageRef = imageGenerationViewModel.image {
@@ -68,10 +70,20 @@ private extension ContentView {
                     .resizable()
                     .border(.white)
                     .frame(width: 250, height: 250)
-                clearImageButtonView.foregroundColor(Color.white)
+                
+                Button(action: {
+                    imageGenerationViewModel.saveImage(image: imageRef)
+                }, label: {
+                    Text("Save Image")
+                        .padding()
+                        .background(Color.white.cornerRadius(20))
+                        .foregroundColor(Color.black)
+                }).padding()
             }
+            clearImageButtonView.foregroundColor(Color.white)
         }
     }
+    
     var progressDisplayView: some View {
         VStack {
             if imageGenerationViewModel.isWorking {
