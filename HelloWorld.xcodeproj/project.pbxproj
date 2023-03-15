@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6A0CDD0629A37496004C2BDD /* APIKeyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0CDD0529A37496004C2BDD /* APIKeyMapper.swift */; };
-		6A0CDD0A29A38762004C2BDD /* APISecret.json in Resources */ = {isa = PBXBuildFile; fileRef = 6A0CDD0929A38762004C2BDD /* APISecret.json */; };
 		6A4487FF29997D13002BC93D /* ImageGenerationResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4487FE29997D13002BC93D /* ImageGenerationResponseMapper.swift */; };
 		6A44880129999AB4002BC93D /* ImageGenerationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44880029999AB4002BC93D /* ImageGenerationService.swift */; };
 		6A8FB0A6299259DC00A6794E /* HelloWorldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8FB0A5299259DC00A6794E /* HelloWorldApp.swift */; };
@@ -23,7 +22,6 @@
 
 /* Begin PBXFileReference section */
 		6A0CDD0529A37496004C2BDD /* APIKeyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyMapper.swift; sourceTree = "<group>"; };
-		6A0CDD0929A38762004C2BDD /* APISecret.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = APISecret.json; sourceTree = "<group>"; };
 		6A4487FE29997D13002BC93D /* ImageGenerationResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerationResponseMapper.swift; sourceTree = "<group>"; };
 		6A44880029999AB4002BC93D /* ImageGenerationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerationService.swift; sourceTree = "<group>"; };
 		6A8FB0A2299259DC00A6794E /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,14 +46,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6A0CDD0229A373BF004C2BDD /* Secret */ = {
-			isa = PBXGroup;
-			children = (
-				6A0CDD0929A38762004C2BDD /* APISecret.json */,
-			);
-			path = Secret;
-			sourceTree = "<group>";
-		};
 		6A8FB099299259DC00A6794E = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +69,6 @@
 				6AD8347E29C20F0B0001A24B /* Error */,
 				6AFF8ED929A4E971002380A1 /* ViewModel */,
 				6AFF8ED829A4E8FF002380A1 /* Service */,
-				6A0CDD0229A373BF004C2BDD /* Secret */,
 				6A8FB0A5299259DC00A6794E /* HelloWorldApp.swift */,
 				6A8FB0A7299259DC00A6794E /* ContentView.swift */,
 				6A8FB0A9299259DE00A6794E /* Assets.xcassets */,
@@ -198,7 +187,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A8FB0AD299259DE00A6794E /* Preview Assets.xcassets in Resources */,
-				6A0CDD0A29A38762004C2BDD /* APISecret.json in Resources */,
 				6A8FB0AA299259DE00A6794E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
