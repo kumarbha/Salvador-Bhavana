@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct APIKeyMapper: Decodable {
+struct APIMapper: Decodable {
     let key: String
+    let url: String
 }

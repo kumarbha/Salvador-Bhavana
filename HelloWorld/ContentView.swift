@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var description: String = ""
-    @ObservedObject var imageGenerationViewModel = ImageGenerationViewModel()
+    @ObservedObject var imageGenerationViewModel = ImageGenerationViewModel(imageGenerationServiceInstance: ImageGenerationService())
     
     var body: some View {
         VStack {
@@ -51,8 +51,10 @@ private extension ContentView {
     }
     var generateImageButtonView: some View {
         Button(action: {
-            imageGenerationViewModel.image = nil
-            imageGenerationViewModel.sendRequest(prompText: description)
+            Task {
+                imageGenerationViewModel.image = nil
+                await imageGenerationViewModel.sendRequest(prompText: description)
+            }
         }, label: {
             Text("Generate Images")
                 .padding()
@@ -72,7 +74,7 @@ private extension ContentView {
                     .frame(width: 250, height: 250)
                 
                 Button(action: {
-                    imageGenerationViewModel.saveImage(image: imageRef)
+                     imageGenerationViewModel.saveImage(image: imageRef)
                 }, label: {
                     Text("Save Image")
                         .padding()
