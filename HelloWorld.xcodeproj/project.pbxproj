@@ -8,29 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		6A0CDD0629A37496004C2BDD /* APIKeyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0CDD0529A37496004C2BDD /* APIKeyMapper.swift */; };
-		6A0CDD0A29A38762004C2BDD /* APISecret.json in Resources */ = {isa = PBXBuildFile; fileRef = 6A0CDD0929A38762004C2BDD /* APISecret.json */; };
 		6A4487FF29997D13002BC93D /* ImageGenerationResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4487FE29997D13002BC93D /* ImageGenerationResponseMapper.swift */; };
 		6A44880129999AB4002BC93D /* ImageGenerationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44880029999AB4002BC93D /* ImageGenerationService.swift */; };
-		6A448806299A5D36002BC93D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A448805299A5D36002BC93D /* Configuration.swift */; };
 		6A8FB0A6299259DC00A6794E /* HelloWorldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8FB0A5299259DC00A6794E /* HelloWorldApp.swift */; };
 		6A8FB0A8299259DC00A6794E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8FB0A7299259DC00A6794E /* ContentView.swift */; };
 		6A8FB0AA299259DE00A6794E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A8FB0A9299259DE00A6794E /* Assets.xcassets */; };
 		6A8FB0AD299259DE00A6794E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A8FB0AC299259DE00A6794E /* Preview Assets.xcassets */; };
+		6AD8347D29C1E3230001A24B /* SaveImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD8347C29C1E3230001A24B /* SaveImageService.swift */; };
+		6AD8348029C20F3B0001A24B /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD8347F29C20F3B0001A24B /* ErrorTypes.swift */; };
 		6AFF8EDB29A4E991002380A1 /* ImageGenerationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFF8EDA29A4E991002380A1 /* ImageGenerationViewModel.swift */; };
 		6AFF8EDD29A65E9E002380A1 /* ImageGenerationRequestPayloadMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFF8EDC29A65E9E002380A1 /* ImageGenerationRequestPayloadMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6A0CDD0529A37496004C2BDD /* APIKeyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyMapper.swift; sourceTree = "<group>"; };
-		6A0CDD0929A38762004C2BDD /* APISecret.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = APISecret.json; sourceTree = "<group>"; };
 		6A4487FE29997D13002BC93D /* ImageGenerationResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerationResponseMapper.swift; sourceTree = "<group>"; };
 		6A44880029999AB4002BC93D /* ImageGenerationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerationService.swift; sourceTree = "<group>"; };
-		6A448805299A5D36002BC93D /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		6A8FB0A2299259DC00A6794E /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8FB0A5299259DC00A6794E /* HelloWorldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWorldApp.swift; sourceTree = "<group>"; };
 		6A8FB0A7299259DC00A6794E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6A8FB0A9299259DE00A6794E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A8FB0AC299259DE00A6794E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6AD8347C29C1E3230001A24B /* SaveImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageService.swift; sourceTree = "<group>"; };
+		6AD8347F29C20F3B0001A24B /* ErrorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
 		6AFF8EDA29A4E991002380A1 /* ImageGenerationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerationViewModel.swift; sourceTree = "<group>"; };
 		6AFF8EDC29A65E9E002380A1 /* ImageGenerationRequestPayloadMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerationRequestPayloadMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,14 +46,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6A0CDD0229A373BF004C2BDD /* Secret */ = {
-			isa = PBXGroup;
-			children = (
-				6A0CDD0929A38762004C2BDD /* APISecret.json */,
-			);
-			path = Secret;
-			sourceTree = "<group>";
-		};
 		6A8FB099299259DC00A6794E = {
 			isa = PBXGroup;
 			children = (
@@ -73,14 +65,14 @@
 		6A8FB0A4299259DC00A6794E /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				6AD8348129C211B90001A24B /* Test */,
+				6AD8347E29C20F0B0001A24B /* Error */,
 				6AFF8ED929A4E971002380A1 /* ViewModel */,
 				6AFF8ED829A4E8FF002380A1 /* Service */,
-				6A0CDD0229A373BF004C2BDD /* Secret */,
 				6A8FB0A5299259DC00A6794E /* HelloWorldApp.swift */,
 				6A8FB0A7299259DC00A6794E /* ContentView.swift */,
 				6A8FB0A9299259DE00A6794E /* Assets.xcassets */,
 				6A8FB0AB299259DE00A6794E /* Preview Content */,
-				6A448805299A5D36002BC93D /* Configuration.swift */,
 				6AFF8ECA29A4C4FF002380A1 /* Model */,
 			);
 			path = HelloWorld;
@@ -92,6 +84,21 @@
 				6A8FB0AC299259DE00A6794E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6AD8347E29C20F0B0001A24B /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				6AD8347F29C20F3B0001A24B /* ErrorTypes.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		6AD8348129C211B90001A24B /* Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		6AFF8ECA29A4C4FF002380A1 /* Model */ = {
@@ -108,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				6A44880029999AB4002BC93D /* ImageGenerationService.swift */,
+				6AD8347C29C1E3230001A24B /* SaveImageService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -179,7 +187,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A8FB0AD299259DE00A6794E /* Preview Assets.xcassets in Resources */,
-				6A0CDD0A29A38762004C2BDD /* APISecret.json in Resources */,
 				6A8FB0AA299259DE00A6794E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,7 +202,8 @@
 				6A0CDD0629A37496004C2BDD /* APIKeyMapper.swift in Sources */,
 				6AFF8EDD29A65E9E002380A1 /* ImageGenerationRequestPayloadMapper.swift in Sources */,
 				6AFF8EDB29A4E991002380A1 /* ImageGenerationViewModel.swift in Sources */,
-				6A448806299A5D36002BC93D /* Configuration.swift in Sources */,
+				6AD8348029C20F3B0001A24B /* ErrorTypes.swift in Sources */,
+				6AD8347D29C1E3230001A24B /* SaveImageService.swift in Sources */,
 				6A44880129999AB4002BC93D /* ImageGenerationService.swift in Sources */,
 				6A8FB0A8299259DC00A6794E /* ContentView.swift in Sources */,
 				6A8FB0A6299259DC00A6794E /* HelloWorldApp.swift in Sources */,

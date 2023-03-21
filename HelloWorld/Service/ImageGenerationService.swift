@@ -55,11 +55,5 @@ struct ImageGenerationService {
             throw ImageGenerationError.errorParsingAPIKey("Parsing API key failed")
         }
     }
-    enum ImageGenerationError: Error {
-        case errorReadingAPIKeyFile(String)
-        case errorParsingAPIKey(String)
-        case apiCallFail(String)
-        case fileNotFound(String)
-    }
-    
 }
+
