@@ -7,12 +7,18 @@
 
 import Foundation
 
-struct ImageGenerationService {
+protocol ImageGenerationServiceProtocol {
+    func generateImage(prompt: String) async throws -> ImageGenerationResponse
+}
+
+class ImageGenerationService: ImageGenerationServiceProtocol {
     func generateImage(prompt: String) async throws -> ImageGenerationResponse {
-        let localData: Data = try await self.readLocalJSONFile(fileName: "APISecret")!
-        let apiSecretKey = try await self.parse(jsonData: localData)
+        let localData: Data = try await self.readLocalJSONFile(fileName: "APISecret")
+        let apiJSONData: APIMapper = try await self.parse(jsonData: localData)
         
-        let url = URL(string: "https://api.openai.com/v1/images/generations")!
+        guard let url = URL(string: apiJSONData.url ) else {
+            throw ImageGenerationError.badURL("Not a valid URL")
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -21,19 +27,18 @@ struct ImageGenerationService {
         
         request.httpBody = requestBody
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(apiSecretKey, forHTTPHeaderField: "Authorization")
+        request.addValue(apiJSONData.key, forHTTPHeaderField: "Authorization")
         
         do {
             let (apiResponse,_) =  try await URLSession.shared.data(for: request)
-            let jsonResult = try JSONDecoder().decode(ImageGenerationResponse.self, from: apiResponse)
-            return jsonResult
+            return try JSONDecoder().decode(ImageGenerationResponse.self, from: apiResponse)
         }
         catch {
             throw ImageGenerationError.apiCallFail("Call to the DALEE API failed")
         }
         
     }
-    private func readLocalJSONFile(fileName: String) async throws -> Data? {
+    private func readLocalJSONFile(fileName: String) async throws -> Data {
         do {
             if let bundlePath = Bundle.main.path(forResource: fileName,
                                                  ofType: "json"),
@@ -42,17 +47,16 @@ struct ImageGenerationService {
                 return rawFileData
             }
         } catch {
-            throw ImageGenerationError.errorReadingAPIKeyFile("Error Reading API keys file")
+            throw ImageGenerationError.errorReadingAPIKeyFile("Error Reading API config file")
         }
-        throw ImageGenerationError.fileNotFound("File name or the file containing API keys not found")
+        throw ImageGenerationError.fileNotFound("There is something wrong in the file name or the file containing the API config")
     }
-    private func parse(jsonData: Data) async throws -> String {
+    private func parse(jsonData: Data) async throws -> APIMapper {
         do {
-            let data = try JSONDecoder().decode(APIKeyMapper.self,
-                                                from: jsonData)
-            return data.key
+            return try JSONDecoder().decode(APIMapper.self,
+                                            from: jsonData)
         } catch {
-            throw ImageGenerationError.errorParsingAPIKey("Parsing API key failed")
+            throw ImageGenerationError.errorParsingAPIKey("Parsing API config failed")
         }
     }
 }

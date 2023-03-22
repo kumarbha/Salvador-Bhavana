@@ -10,7 +10,7 @@ import UIKit
 
 class SaveImageService: NSObject {
     func saveImage(image: UIImage) throws -> Bool {
-        UIImageWriteToSavedPhotosAlbum (image,
+         UIImageWriteToSavedPhotosAlbum (image,
                                         self,
                                         #selector(image(_:didFinishSavingWithError: contextInfo:)),
                                         nil)

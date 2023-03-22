@@ -15,32 +15,43 @@ import UIKit
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
-    func sendRequest(prompText: String) {
-        Task {
-            isWorking = true
-            do {
-                let response = try await ImageGenerationService().generateImage(prompt: prompText)
-                let imageURL = response.data[0].url
-                let (data,_) = try await URLSession.shared.data(from: imageURL)
-                image = UIImage(data: data)
-                isWorking = false
-            }
-            catch ImageGenerationError.apiCallFail(let msg){
-                setFlags(msg)
-            }
-            catch ImageGenerationError.errorParsingAPIKey(let msg){
-                setFlags(msg)
-            }
-            catch ImageGenerationError.errorReadingAPIKeyFile(let msg){
-                setFlags(msg)
-            }
-            catch ImageGenerationError.fileNotFound(let msg){
-                setFlags(msg)
-            }
-            catch SaveImageError.saveError(let msg){
-                setFlags(msg)
-            }
+    var imageGenerationServiceInstance: ImageGenerationServiceProtocol
+    
+    init(imageGenerationServiceInstance: ImageGenerationServiceProtocol) {
+        self.imageGenerationServiceInstance = imageGenerationServiceInstance;
+    }
+    
+    func sendRequest(prompText: String) async {
+        isWorking = true
+        do {
+            let response = try await imageGenerationServiceInstance.generateImage(prompt: prompText)
+            let imageURL = response.data[0].url
+            let (data,_) = try await URLSession.shared.data(from: imageURL)
+            image = UIImage(data: data)
+            isWorking = false
         }
+        catch ImageGenerationError.badURL(let msg){
+            setFlags(msg)
+        }
+        catch ImageGenerationError.apiCallFail(let msg){
+            setFlags(msg)
+        }
+        catch ImageGenerationError.errorParsingAPIKey(let msg){
+            setFlags(msg)
+        }
+        catch ImageGenerationError.errorReadingAPIKeyFile(let msg){
+            setFlags(msg)
+        }
+        catch ImageGenerationError.fileNotFound(let msg){
+            setFlags(msg)
+        }
+        catch SaveImageError.saveError(let msg){
+            setFlags(msg)
+        }
+        catch {
+            setFlags(error.localizedDescription)
+        }
+        
     }
     
     fileprivate func setFlags(_ msg: String) {

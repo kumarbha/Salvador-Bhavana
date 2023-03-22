@@ -12,6 +12,7 @@ enum SaveImageError: Error {
 }
 
 enum ImageGenerationError: Error {
+    case badURL(String)
     case errorReadingAPIKeyFile(String)
     case errorParsingAPIKey(String)
     case apiCallFail(String)
