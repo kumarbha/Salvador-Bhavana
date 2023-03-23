@@ -60,13 +60,14 @@ import UIKit
         alertMessage = msg
     }
     
+    fileprivate func doSomething() {
+        showAlert = true
+        alertMessage = "Saved successfully"
+    }
+    
     func saveImage(image: UIImage) {
         do {
-            let isImageSaved = try SaveImageService().saveImage(image: image);
-            if(isImageSaved) {
-                showAlert = true
-                alertMessage = "Saved successfully"
-            }
+            try SaveImageService().saveImage(image: image, savedCallback: doSomething);
         }
         catch {
             showAlert = true
