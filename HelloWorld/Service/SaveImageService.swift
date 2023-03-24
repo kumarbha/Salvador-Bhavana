@@ -9,17 +9,21 @@ import Foundation
 import UIKit
 
 class SaveImageService: NSObject {
-    func saveImage(image: UIImage) throws -> Bool {
+    var saved: () -> Void = {}
+    func saveImage(image: UIImage, savedCallback: @escaping () -> Void) throws {
          UIImageWriteToSavedPhotosAlbum (image,
                                         self,
                                         #selector(image(_:didFinishSavingWithError: contextInfo:)),
                                         nil)
-        return true;
+        saved = savedCallback
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) throws {
         if let error = error {
             throw SaveImageError.saveError("Could not save Image to device" + error.localizedDescription)
+        }
+        else {
+            saved();
         }
     }
 }
