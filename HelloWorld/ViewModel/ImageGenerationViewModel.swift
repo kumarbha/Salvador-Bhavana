@@ -60,18 +60,16 @@ import UIKit
         alertMessage = msg
     }
     
-    fileprivate func doSomething() {
-        showAlert = true
-        alertMessage = "Saved successfully"
+    fileprivate func successfullySaved() {
+       setFlags("Saved successfully")
     }
     
     func saveImage(image: UIImage) {
         do {
-            try SaveImageService().saveImage(image: image, savedCallback: doSomething);
+            try SaveImageService().saveImage(image: image, savedCallback: successfullySaved);
         }
         catch {
-            showAlert = true
-            alertMessage = error.localizedDescription;
+            setFlags(error.localizedDescription)
         }
     }
 }
